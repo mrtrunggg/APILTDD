@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('sanpham',[SanphamController::class, 'showall']);
+Route::get('sanpham',[SanphamController::class, 'Laydanhsach']);
+Route::get('sanpham/{id}',[SanphamController::class, 'Laychitiet']);
+Route::post('sanpham/themmoi',[SanphamController::class, 'Themmoi']);
+Route::put('sanpham/{id}/capnhat',[SanphamController::class, 'Capnhat']);
+Route::delete('sanpham/{id}/xoa',[SanphamController::class, 'Xoa']);
