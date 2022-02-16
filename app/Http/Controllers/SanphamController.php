@@ -8,8 +8,8 @@ class SanphamController extends Controller
 {
     public function showall(){       
         $dsSP = Sanpham::all();
-        return json_encode([
-            $dsSP,
-        ]);             
+        return json_encode(
+            $dsSP     
+        );             
     }
 }
