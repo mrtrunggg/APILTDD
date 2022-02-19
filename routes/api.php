@@ -20,7 +20,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('sanpham',[SanphamController::class, 'Laydanhsach']);
+Route::get('sanpham',[SanphamController::class, 'showall']);
+
+Route::get('sanphambanchay',[SanphamController::class, 'sanphambanchay']);
+
+
+Route::get('DSSPBK',[SanphamController::class, 'showallDSSPbanhkem']);
+Route::get('DSSPBMT',[SanphamController::class, 'showallDSSPbanhmithit']);
+Route::get('DSSPBM',[SanphamController::class, 'showallDSSPbanhmi']);
+Route::get('DSSPBMNgot',[SanphamController::class, 'showallDSSPBMngot']);
+
 Route::get('sanpham/{id}',[SanphamController::class, 'Laychitiet']);
 Route::post('sanpham/themmoi',[SanphamController::class, 'Themmoi']);
 Route::put('sanpham/{id}/capnhat',[SanphamController::class, 'Capnhat']);

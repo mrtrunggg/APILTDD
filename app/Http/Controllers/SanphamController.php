@@ -3,16 +3,59 @@
 namespace App\Http\Controllers;
 use App\Models\Sanpham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SanphamController extends Controller
 {
-<<<<<<< HEAD
+
     public function showall(){       
-        $dsSP = Sanpham::all();
+        $dsSP = Sanpham::orderBy('id','DESC')->GET();
         return json_encode(
             $dsSP     
-        );             
-=======
+        );   
+    }          
+    public function showallDSSPbanhkem(){    
+        $dsSP = DB::table('Sanpham')->where('loaisanpham_id','=','1')->get();   
+        return json_encode(
+            $dsSP     
+        );   
+    }   
+
+    public function showallDSSPbanhmithit(){    
+        $dsSP = DB::table('Sanpham')->where('loaisanpham_id','=','3')->get();   
+        return json_encode(
+            $dsSP     
+        );   
+    }   
+
+    public function showallDSSPbanhmi(){    
+        $dsSP = DB::table('Sanpham')->where('loaisanpham_id','=','2')->get();   
+        return json_encode(
+            $dsSP     
+        );   
+    }  
+    public function showallDSSPBMngot(){    
+        $dsSP = DB::table('Sanpham')->where('loaisanpham_id','=','4')->get();   
+        return json_encode(
+            $dsSP     
+        );   
+    }
+
+    public function sanphambanchay(){
+        $dsSP = DB::table('Sanpham')->join('CTHoadonban','Sanpham.id','=','CTHoadonban.sanpham_id')
+        ->groupby('CTHoadonban.sanpham_id')
+        ->get();
+      
+        @dd($dsSP);
+        
+
+        return json_encode(
+            $dsSP     
+        );  
+    }
+
+
+
     //Lay danh sach sản phẩm
     public function Laydanhsach(){
         $danhSach = Sanpham::all();
@@ -20,7 +63,7 @@ class SanphamController extends Controller
             'success' =>true,
             'data'=> $danhSach
         ]);
->>>>>>> 4c29620a4bacb663ec6f32e8f8d1125be967983b
+
     }
     //Lay chi tiết 1 sản phẩm
     public function Laychitiet($id){
